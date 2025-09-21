@@ -46,7 +46,7 @@ export function createFooter() {
             links: [
                 { text: 'Home', url: 'index.html', icon: 'chevron-left' },
                 { text: 'Hospitals', url: 'hospitals.html', icon: 'hospital' },
-                { text: 'Book Appointment', url: 'book.html', icon: 'calendar-plus' },
+                { text: 'Book Appointment', url: 'booking.html', icon: 'calendar-plus' },
                 { text: 'Ask a Question', url: 'ask.html', icon: 'question-circle' },
                 { text: 'About Us', url: 'about.html', icon: 'info-circle' },
                 { text: 'Contact', url: 'contact.html', icon: 'envelope' }
