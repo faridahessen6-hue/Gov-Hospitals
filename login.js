@@ -1,64 +1,112 @@
-// Login Page JavaScript
+// Login page functionality
 document.addEventListener('DOMContentLoaded', function() {
-    // Add styles
-    addStyles();
-    
-    // Create login form container
-    const mainContent = document.querySelector('main');
-    mainContent.innerHTML = '';
-    
-    // Create login card
-    const loginCard = document.createElement('div');
-    loginCard.className = 'login-container';
-    
-    // Login form HTML
-    loginCard.innerHTML = `
-        <div class="row justify-content-center">
-            <div class="col-12 col-xl-10">
-                <div class="card shadow-lg border-0">
-                    <div class="row g-0 flex-row-reverse">
-                        <!-- Right side - Welcome Message -->
-                        <div class="col-lg-5 d-none d-lg-flex align-items-center justify-content-center bg-primary text-white p-5">
-                            <div class="text-center">
-                                <i class="bi bi-shield-lock display-3 mb-3"></i>
-                                <h3 class="mb-3">Welcome Back!</h3>
-                                <p class="mb-0">Sign in to access your account and manage your services.</p>
-                            </div>
-                        </div>
-                        
-                        <!-- Left side - Login Form -->
-                        <div class="col-lg-7 p-5 d-flex flex-column">
-                            <div class="text-center mb-5">
-                                <h2 class="display-5 fw-bold mb-3" style="color: #003366;">Login to Your Account</h2>
-                                <p class="text-muted">Access your dashboard and manage your services</p>
-                            </div>
-                            <form id="loginForm">
-                                <div class="mb-4">
-                                    <label for="username" class="form-label">Username or Email</label>
-                                    <div class="input-group">
-                                        <span class="input-group-text"><i class="bi bi-person"></i></span>
-                                        <input type="text" class="form-control" id="username" placeholder="Enter your username or email" required>
+    createLoginContent();
+    initializeLoginForm();
+});
+
+// Create the main login content
+function createLoginContent() {
+    const main = document.querySelector('main');
+    if (!main) return;
+
+    main.innerHTML = `
+        <div class="container-fluid min-vh-100 d-flex align-items-center">
+            <div class="row w-100 justify-content-center">
+                <div class="col-md-6 col-lg-4">
+                    <div class="auth-container">
+                        <div class="card shadow-lg border-0">
+                            <div class="card-body p-5">
+                                <!-- Logo and Title -->
+                                <div class="text-center mb-4">
+                                    <div class="auth-logo mb-3">
+                                        <i class="bi bi-hospital" style="font-size: 3rem; color: var(--primary-color);"></i>
                                     </div>
+                                    <h2 class="fw-bold mb-2">Welcome Back</h2>
+                                    <p class="text-muted mb-0">Sign in to access your account</p>
+                                    <p class="text-muted small">أهلاً بك مرة أخرى - سجل دخولك للوصول لحسابك</p>
                                 </div>
-                                <div class="mb-4">
-                                    <label for="password" class="form-label">Password</label>
-                                    <div class="input-group">
-                                        <span class="input-group-text"><i class="bi bi-lock"></i></span>
-                                        <input type="password" class="form-control" id="password" placeholder="Enter your password" required>
-                                        <button class="btn btn-outline-secondary" type="button" id="togglePassword">
-                                            <i class="bi bi-eye"></i>
-                                        </button>
+
+                                <!-- Login Form -->
+                                <form id="loginForm" novalidate>
+                                    <!-- Email Field -->
+                                    <div class="mb-3">
+                                        <label for="email" class="form-label fw-medium">
+                                            <i class="bi bi-envelope me-2"></i>Email Address
+                                        </label>
+                                        <input type="email" class="form-control form-control-lg" id="email" 
+                                               placeholder="Enter your email" required>
+                                        <div class="invalid-feedback"></div>
                                     </div>
+
+                                    <!-- Password Field -->
+                                    <div class="mb-3">
+                                        <label for="password" class="form-label fw-medium">
+                                            <i class="bi bi-lock me-2"></i>Password
+                                        </label>
+                                        <div class="input-group">
+                                            <input type="password" class="form-control form-control-lg" id="password" 
+                                                   placeholder="Enter your password" required>
+                                            <button class="btn btn-outline-secondary" type="button" id="togglePassword">
+                                                <i class="bi bi-eye"></i>
+                                            </button>
+                                        </div>
+                                        <div class="invalid-feedback"></div>
+                                    </div>
+
+                                    <!-- Remember Me & Forgot Password -->
+                                    <div class="d-flex justify-content-between align-items-center mb-4">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="rememberMe">
+                                            <label class="form-check-label" for="rememberMe">
+                                                Remember me
+                                            </label>
+                                        </div>
+                                        <a href="password.html" class="text-decoration-none small">
+                                            Forgot password?
+                                        </a>
+                                    </div>
+
+                                    <!-- Login Button -->
+                                    <button type="submit" class="btn btn-primary btn-lg w-100 mb-3" id="loginBtn">
+                                        <span class="btn-text">
+                                            <i class="bi bi-box-arrow-in-right me-2"></i>Sign In
+                                        </span>
+                                        <span class="btn-loading d-none">
+                                            <span class="spinner-border spinner-border-sm me-2" role="status"></span>
+                                            Signing in...
+                                        </span>
+                                    </button>
+
+                                    <!-- Demo Credentials -->
+                                    <div class="alert alert-info small mb-3">
+                                        <strong>Demo Credentials:</strong><br>
+                                        Email: demo@hospital.gov<br>
+                                        Password: Demo123!
+                                    </div>
+                                </form>
+
+                                <!-- Divider -->
+                                <div class="text-center my-4">
+                                    <span class="text-muted small">or</span>
                                 </div>
-                                <div class="d-grid gap-2">
-                                    <button type="submit" class="btn btn-primary btn-lg">Login</button>
+
+                                <!-- Social Login Options -->
+                                <div class="d-grid gap-2 mb-4">
+                                    <button class="btn btn-outline-danger" type="button">
+                                        <i class="bi bi-google me-2"></i>Continue with Google
+                                    </button>
+                                    <button class="btn btn-outline-primary" type="button">
+                                        <i class="bi bi-facebook me-2"></i>Continue with Facebook
+                                    </button>
                                 </div>
-                                <div class="text-center mt-3">
-                                    <a href="password.html" class="text-decoration-none">Forgot password?</a>
+
+                                <!-- Sign Up Link -->
+                                <div class="text-center">
+                                    <p class="mb-0 text-muted">
+                                        Don't have an account? 
+                                        <a href="sign.html" class="text-decoration-none fw-bold">Create one</a>
+                                    </p>
                                 </div>
-                            </form>
-                            <div class="text-center mt-4">
-                                <p class="mb-0">Don't have an account? <a href="sign.html" class="text-decoration-none fw-bold">Sign up</a></p>
                             </div>
                         </div>
                     </div>
@@ -66,188 +114,267 @@ document.addEventListener('DOMContentLoaded', function() {
             </div>
         </div>
     `;
-    
-    mainContent.appendChild(loginCard);
-    
-    // Add event listeners
-    setupEventListeners();
-});
+}
 
-function setupEventListeners() {
-    // Toggle password visibility
+// Initialize login form functionality
+function initializeLoginForm() {
+    const form = document.getElementById('loginForm');
     const togglePassword = document.getElementById('togglePassword');
+    const passwordField = document.getElementById('password');
+    
+    if (!form) return;
+
+    // Toggle password visibility
+    if (togglePassword && passwordField) {
+        togglePassword.addEventListener('click', function() {
+            const type = passwordField.getAttribute('type') === 'password' ? 'text' : 'password';
+            passwordField.setAttribute('type', type);
+            
+            const icon = this.querySelector('i');
+            icon.classList.toggle('bi-eye');
+            icon.classList.toggle('bi-eye-slash');
+        });
+    }
+
+    // Form submission
+    form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        if (validateLoginForm()) {
+            handleLogin();
+        }
+    });
+
+    // Real-time validation
+    const emailField = document.getElementById('email');
+    const passwordField2 = document.getElementById('password');
+
+    if (emailField) {
+        emailField.addEventListener('blur', () => validateField(emailField, validateEmail));
+        emailField.addEventListener('input', () => clearFieldError(emailField));
+    }
+
+    if (passwordField2) {
+        passwordField2.addEventListener('blur', () => validateField(passwordField2, validatePassword));
+        passwordField2.addEventListener('input', () => clearFieldError(passwordField2));
+    }
+}
+
+// Validate login form
+function validateLoginForm() {
+    const email = document.getElementById('email');
     const password = document.getElementById('password');
     
-    if (togglePassword && password) {
-        togglePassword.addEventListener('click', function() {
-            const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
-            password.setAttribute('type', type);
-            this.querySelector('i').classList.toggle('bi-eye');
-            this.querySelector('i').classList.toggle('bi-eye-slash');
-        });
+    let isValid = true;
+
+    // Validate email
+    if (!validateField(email, validateEmail)) {
+        isValid = false;
     }
-    
-    // Handle form submission
-    const loginForm = document.getElementById('loginForm');
-    if (loginForm) {
-        loginForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // Get form values
-            const username = document.getElementById('username').value.trim();
-            const password = document.getElementById('password').value;
-            
-            // Basic validation
-            if (!username || !password) {
-                alert('Please fill in all fields');
-                return;
-            }
-            
-            // In a real application, you would validate against your backend here
-            // For demo purposes, we'll simulate a successful login
-            try {
-                // Store user info in sessionStorage
-                const userData = {
-                    username: username,
-                    name: username.split('@')[0], // Extract name from email or use username
-                    loggedIn: true,
-                    timestamp: new Date().toISOString()
-                };
-                
-                // Save to sessionStorage
-                sessionStorage.setItem('user', JSON.stringify(userData));
-                
-                // Redirect to home page or dashboard
-                window.location.href = 'home.html';
-                
-            } catch (error) {
-                console.error('Login error:', error);
-                alert('An error occurred during login. Please try again.');
-            }
-        });
+
+    // Validate password
+    if (!validateField(password, validatePassword)) {
+        isValid = false;
     }
+
+    return isValid;
+}
+
+// Generic field validation
+function validateField(field, validationFunction) {
+    if (!field) return false;
+
+    const value = field.value.trim();
+    const result = validationFunction(value);
     
-    // Handle sign up link
-    const signupLink = document.getElementById('signupLink');
-    if (signupLink) {
-        signupLink.addEventListener('click', function(e) {
-            e.preventDefault();
-            // Add your sign up logic here
-            console.log('Sign up link clicked');
-        });
+    if (result.isValid) {
+        showFieldSuccess(field);
+        return true;
+    } else {
+        showFieldError(field, result.message);
+        return false;
     }
 }
 
-function addStyles() {
-    const style = document.createElement('style');
-    style.textContent = `
-        /* Base styles */
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-        }
-        
-        main {
-            flex: 1;
-            display: flex;
-            align-items: center;
-            padding: 4rem 0;  /* Increased vertical padding */
-        }
-        
-        /* Login container */
-        .login-container {
-            width: 100%;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 15px;
-        }
-        
-        /* Card styles */
-        .card {
-            border-radius: 1rem;
-            overflow: hidden;
-            min-height: 600px;  /* Set minimum height */
-            box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
-        }
-        
-        /* Form container */
-        .col-lg-7 {
-            padding: 4rem !important;  /* Increased padding */
-            display: flex !important;
-            flex-direction: column;
-            justify-content: center;
-        }
-        
-        /* Welcome section */
-        .col-lg-5 {
-            padding: 4rem 2rem !important;
-            display: flex !important;
-            flex-direction: column;
-            justify-content: center;
-        }
-        
-        /* Form elements */
-        .form-control {
-            padding: 0.75rem 1rem;
-            height: auto;
-            border-radius: 0.5rem;
-        }
-        
-        .form-control:focus {
-            border-color: #003366;
-            box-shadow: 0 0 0 0.25rem rgba(0, 51, 102, 0.15);
-        }
-        
-        .btn {
-            padding: 0.75rem 1.5rem;
-            border-radius: 0.5rem;
-            font-weight: 500;
-        }
-        
-        .btn-primary {
-            background-color: #003366;
-            border-color: #003366;
-            transition: all 0.3s ease;
-        }
-        
-        .btn-primary:hover {
-            background-color: #002244;
-            border-color: #002244;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-        }
-        
-        .btn-outline-secondary {
-            border-radius: 0 0.5rem 0.5rem 0;
-        }
-        
-        /* Responsive adjustments */
-        @media (max-width: 991.98px) {
-            .login-container {
-                padding: 1.5rem;
-            }
-            
-            .card {
-                margin: 1rem 0;
-                min-height: auto;
-            }
-            
-            .col-lg-7, .col-lg-5 {
-                padding: 2rem !important;
-            }
-        }
-        
-        @media (max-width: 767.98px) {
-            main {
-                padding: 2rem 0;
-            }
-            
-            .col-lg-7, .col-lg-5 {
-                padding: 1.5rem !important;
-            }
-        }
-    `;
-    document.head.appendChild(style);
+// Email validation
+function validateEmail(email) {
+    if (!email) {
+        return { isValid: false, message: 'Email is required' };
+    }
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+        return { isValid: false, message: 'Please enter a valid email address' };
+    }
+
+    return { isValid: true };
 }
+
+// Password validation
+function validatePassword(password) {
+    if (!password) {
+        return { isValid: false, message: 'Password is required' };
+    }
+
+    if (password.length < 6) {
+        return { isValid: false, message: 'Password must be at least 6 characters' };
+    }
+
+    return { isValid: true };
+}
+
+// Show field error
+function showFieldError(field, message) {
+    field.classList.add('is-invalid');
+    field.classList.remove('is-valid');
+    
+    const feedback = field.parentElement.querySelector('.invalid-feedback') || 
+                    field.nextElementSibling?.classList.contains('invalid-feedback') && field.nextElementSibling;
+    
+    if (feedback) {
+        feedback.textContent = message;
+    }
+}
+
+// Show field success
+function showFieldSuccess(field) {
+    field.classList.add('is-valid');
+    field.classList.remove('is-invalid');
+}
+
+// Clear field error
+function clearFieldError(field) {
+    field.classList.remove('is-invalid', 'is-valid');
+}
+
+// Handle login process
+async function handleLogin() {
+    const loginBtn = document.getElementById('loginBtn');
+    const email = document.getElementById('email').value.trim();
+    const password = document.getElementById('password').value.trim();
+    const rememberMe = document.getElementById('rememberMe').checked;
+
+    // Show loading state
+    setButtonLoading(loginBtn, true);
+
+    try {
+        // Simulate API call
+        await new Promise(resolve => setTimeout(resolve, 1500));
+
+        // Demo authentication logic
+        if (email === 'demo@hospital.gov' && password === 'Demo123!') {
+            // Store user session
+            const userData = {
+                email: email,
+                name: 'Demo User',
+                role: 'patient',
+                loginTime: new Date().toISOString()
+            };
+
+            if (rememberMe) {
+                localStorage.setItem('userSession', JSON.stringify(userData));
+            } else {
+                sessionStorage.setItem('userSession', JSON.stringify(userData));
+            }
+
+            // Show success message
+            showAlert('success', 'Login successful! Redirecting...', 'Welcome back!');
+            
+            // Redirect to dashboard or home page
+            setTimeout(() => {
+                window.location.href = 'home.html';
+            }, 1500);
+
+        } else {
+            // Authentication failed
+            throw new Error('Invalid email or password');
+        }
+
+    } catch (error) {
+        console.error('Login error:', error);
+        showAlert('danger', error.message || 'Login failed. Please try again.', 'Login Error');
+        
+        // Focus back to email field
+        document.getElementById('email').focus();
+        
+    } finally {
+        // Hide loading state
+        setButtonLoading(loginBtn, false);
+    }
+}
+
+// Set button loading state
+function setButtonLoading(button, isLoading) {
+    if (!button) return;
+
+    const btnText = button.querySelector('.btn-text');
+    const btnLoading = button.querySelector('.btn-loading');
+
+    if (isLoading) {
+        btnText.classList.add('d-none');
+        btnLoading.classList.remove('d-none');
+        button.disabled = true;
+    } else {
+        btnText.classList.remove('d-none');
+        btnLoading.classList.add('d-none');
+        button.disabled = false;
+    }
+}
+
+// Show alert message
+function showAlert(type, message, title = '') {
+    // Remove any existing alerts
+    const existingAlert = document.querySelector('.alert-custom');
+    if (existingAlert) {
+        existingAlert.remove();
+    }
+
+    // Create new alert
+    const alert = document.createElement('div');
+    alert.className = `alert alert-${type} alert-dismissible fade show alert-custom`;
+    alert.style.position = 'fixed';
+    alert.style.top = '20px';
+    alert.style.right = '20px';
+    alert.style.zIndex = '9999';
+    alert.style.minWidth = '300px';
+
+    alert.innerHTML = `
+        ${title ? `<strong>${title}</strong><br>` : ''}
+        ${message}
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    `;
+
+    document.body.appendChild(alert);
+
+    // Auto-remove after 5 seconds
+    setTimeout(() => {
+        if (alert && alert.parentElement) {
+            alert.remove();
+        }
+    }, 5000);
+}
+
+// Check if user is already logged in
+function checkExistingSession() {
+    const userSession = localStorage.getItem('userSession') || sessionStorage.getItem('userSession');
+    
+    if (userSession) {
+        try {
+            const userData = JSON.parse(userSession);
+            // If valid session exists, redirect to dashboard
+            showAlert('info', 'You are already logged in. Redirecting...');
+            setTimeout(() => {
+                window.location.href = 'home.html';
+            }, 1500);
+        } catch (error) {
+            // Invalid session data, clear it
+            localStorage.removeItem('userSession');
+            sessionStorage.removeItem('userSession');
+        }
+    }
+}
+
+// Initialize session check when page loads
+document.addEventListener('DOMContentLoaded', function() {
+    checkExistingSession();
+});

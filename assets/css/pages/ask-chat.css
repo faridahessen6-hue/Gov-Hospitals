@@ -1,0 +1,122 @@
+/* Ask Chat Interface Styles */
+
+:root {
+    --primary-color: #003366;
+    --secondary-color: #e9ecef;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: #f8f9fa;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.chat-container {
+    max-width: 800px;
+    margin: 2rem auto;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.chat-header {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 1rem;
+    text-align: center;
+    position: relative;
+}
+
+.lang-switcher {
+    position: absolute;
+    top: 10px;
+    left: 15px;
+}
+
+.chat-messages {
+    flex: 1;
+    padding: 1.5rem;
+    overflow-y: auto;
+    max-height: 60vh;
+}
+
+.message {
+    margin-bottom: 1rem;
+    max-width: 80%;
+    line-height: 1.5;
+}
+
+.bot-message {
+    align-self: flex-start;
+    background-color: var(--secondary-color);
+    border-radius: 15px 15px 15px 0;
+    padding: 0.75rem 1rem;
+}
+
+.user-message {
+    align-self: flex-end;
+    background-color: var(--primary-color);
+    color: white;
+    border-radius: 15px 15px 0 15px;
+    padding: 0.75rem 1rem;
+}
+
+.chat-input {
+    padding: 1rem;
+    border-top: 1px solid #dee2e6;
+    background-color: #f8f9fa;
+}
+
+.options-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 10px;
+}
+
+.options-container button {
+    white-space: nowrap;
+    text-align: left;
+    transition: all 0.2s;
+    border-radius: 20px;
+    padding: 0.25rem 0.75rem;
+}
+
+.options-container button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.rtl {
+    direction: rtl;
+    text-align: right;
+}
+
+.rtl .message {
+    margin-right: auto;
+    margin-left: 0;
+}
+
+.rtl .user-message {
+    margin-left: auto;
+    margin-right: 0;
+}
+
+.rtl .bot-message {
+    border-radius: 15px 15px 0 15px;
+}
+
+.rtl .user-message {
+    border-radius: 15px 0 15px 15px;
+}
+
+/* Utility Classes */
+.hidden {
+    display: none;
+}

@@ -1,0 +1,100 @@
+/* Contact Page Styles */
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background-color: #f8f9fa;
+}
+
+.contact-hero {
+    background: linear-gradient(rgba(0, 51, 102, 0.9), rgba(0, 51, 102, 0.9)), url('https://source.unsplash.com/1600x900/?hospital,contact') center/cover no-repeat;
+    color: white;
+    padding: 80px 0;
+    margin-bottom: 50px;
+}
+
+.contact-form {
+    background: white;
+    border-radius: 8px;
+    padding: 30px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    margin-bottom: 30px;
+}
+
+.contact-info {
+    background: #f8f9fa;
+    border-radius: 8px;
+    padding: 30px;
+    height: 100%;
+}
+
+.contact-icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: #003366;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+}
+
+.form-control:focus, .form-select:focus {
+    border-color: #003366;
+    box-shadow: 0 0 0 0.25rem rgba(0, 51, 102, 0.25);
+}
+
+.btn-primary {
+    background-color: #003366;
+    border-color: #003366;
+}
+
+.btn-primary:hover {
+    background-color: #002244;
+    border-color: #002244;
+}
+
+.contact-method {
+    margin-bottom: 30px;
+}
+
+.contact-method h5 {
+    color: #003366;
+    margin-bottom: 15px;
+}
+
+.contact-method p {
+    margin-bottom: 5px;
+}
+
+.social-links a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: #003366;
+    color: white;
+    margin-right: 10px;
+    text-decoration: none;
+    transition: all 0.3s;
+}
+
+.social-links a:hover {
+    background: #002244;
+    transform: translateY(-3px);
+}
+
+@media (max-width: 768px) {
+    .contact-hero {
+        padding: 60px 0;
+    }
+    .contact-form, .contact-info {
+        padding: 20px;
+    }
+}

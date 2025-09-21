@@ -1,0 +1,339 @@
+/* Authentication Forms Styles */
+/* Styles for login, signup, password recovery pages */
+
+:root {
+    --auth-primary: #007bff;
+    --auth-secondary: #6c757d;
+    --auth-success: #28a745;
+    --auth-warning: #ffc107;
+    --auth-danger: #dc3545;
+    --auth-light: #f8f9fa;
+    --auth-dark: #343a40;
+}
+
+/* Base auth page layout */
+body[data-page*="auth"],
+body[data-page="login"],
+body[data-page="signup"],
+body[data-page="password"] {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    padding-top: 0;
+}
+
+body[data-page*="auth"] main,
+body[data-page="login"] main,
+body[data-page="signup"] main,
+body[data-page="password"] main {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem 0;
+}
+
+/* Auth container styles */
+.auth-container,
+.login-container,
+.signup-container,
+.recovery-container {
+    max-width: 500px;
+    width: 100%;
+    padding: 0 15px;
+}
+
+.recovery-container {
+    max-width: 500px;
+    width: 100%;
+    padding: 0 15px;
+}
+
+/* Auth cards */
+.auth-container .card,
+.login-container .card,
+.signup-container .card,
+.recovery-container .card {
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
+    background: rgba(255, 255, 255, 0.95);
+}
+
+.auth-container .card-body,
+.login-container .card-body,
+.signup-container .card-body,
+.recovery-container .card-body {
+    padding: 2.5rem;
+}
+
+/* Form styling */
+.auth-form .form-control,
+.recovery-form .form-control {
+    border-radius: 10px;
+    border: 2px solid #e9ecef;
+    padding: 0.75rem 1rem;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+}
+
+.auth-form .form-control:focus,
+.recovery-form .form-control:focus {
+    border-color: var(--auth-primary);
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+    transform: translateY(-2px);
+}
+
+.auth-form .input-group-text,
+.recovery-form .input-group-text {
+    border: 2px solid #e9ecef;
+    border-right: none;
+    background: transparent;
+    color: var(--auth-secondary);
+    border-radius: 10px 0 0 10px;
+}
+
+.auth-form .input-group .form-control,
+.recovery-form .input-group .form-control {
+    border-left: none;
+    border-radius: 0 10px 10px 0;
+}
+
+.auth-form .input-group:focus-within .input-group-text,
+.recovery-form .input-group:focus-within .input-group-text {
+    border-color: var(--auth-primary);
+    color: var(--auth-primary);
+}
+
+/* Buttons */
+.auth-form .btn,
+.recovery-form .btn {
+    border-radius: 10px;
+    padding: 0.75rem 2rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    transition: all 0.3s ease;
+    width: 100%;
+    margin-top: 1rem;
+}
+
+.auth-form .btn-primary,
+.recovery-form .btn-primary {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border: none;
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+}
+
+.auth-form .btn-primary:hover,
+.recovery-form .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(102, 126, 234, 0.6);
+}
+
+/* Links and navigation */
+.back-to-login {
+    text-align: center;
+    margin-top: 1.5rem;
+}
+
+.back-to-login a {
+    color: var(--auth-secondary);
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.back-to-login a:hover {
+    color: var(--auth-primary);
+}
+
+.auth-links {
+    text-align: center;
+    margin-top: 1.5rem;
+}
+
+.auth-links a {
+    color: var(--auth-primary);
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.auth-links a:hover {
+    color: var(--auth-dark);
+    text-decoration: underline;
+}
+
+/* Form headers */
+.auth-container h1,
+.auth-container h2,
+.login-container h1,
+.login-container h2,
+.signup-container h1,
+.signup-container h2,
+.recovery-container h1,
+.recovery-container h2 {
+    color: var(--auth-dark);
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+.auth-container .text-muted,
+.login-container .text-muted,
+.signup-container .text-muted,
+.recovery-container .text-muted {
+    color: var(--auth-secondary) !important;
+}
+
+/* Alert styling */
+.alert {
+    border-radius: 10px;
+    border: none;
+    font-weight: 500;
+}
+
+.alert-success {
+    background: rgba(40, 167, 69, 0.1);
+    color: var(--auth-success);
+}
+
+.alert-danger {
+    background: rgba(220, 53, 69, 0.1);
+    color: var(--auth-danger);
+}
+
+.alert-info {
+    background: rgba(23, 162, 184, 0.1);
+    color: #17a2b8;
+}
+
+/* Loading states */
+.btn.loading {
+    position: relative;
+    color: transparent;
+}
+
+.btn.loading::after {
+    content: '';
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    top: 50%;
+    left: 50%;
+    margin-left: -8px;
+    margin-top: -8px;
+    border-radius: 50%;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-top-color: white;
+    animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Validation states */
+.form-control.is-valid {
+    border-color: var(--auth-success);
+}
+
+.form-control.is-invalid {
+    border-color: var(--auth-danger);
+}
+
+.valid-feedback {
+    color: var(--auth-success);
+    font-size: 0.875rem;
+    margin-top: 0.25rem;
+}
+
+.invalid-feedback {
+    color: var(--auth-danger);
+    font-size: 0.875rem;
+    margin-top: 0.25rem;
+}
+
+/* Password strength indicator */
+.password-strength {
+    margin-top: 0.5rem;
+}
+
+.password-strength-bar {
+    height: 4px;
+    border-radius: 2px;
+    background: #e9ecef;
+    overflow: hidden;
+    margin-bottom: 0.5rem;
+}
+
+.password-strength-fill {
+    height: 100%;
+    border-radius: 2px;
+    transition: all 0.3s ease;
+}
+
+.strength-weak .password-strength-fill {
+    width: 33%;
+    background: var(--auth-danger);
+}
+
+.strength-medium .password-strength-fill {
+    width: 66%;
+    background: var(--auth-warning);
+}
+
+.strength-strong .password-strength-fill {
+    width: 100%;
+    background: var(--auth-success);
+}
+
+/* Two-factor authentication */
+.verification-code {
+    display: flex;
+    gap: 0.5rem;
+    justify-content: center;
+    margin: 1.5rem 0;
+}
+
+.verification-code input {
+    width: 50px;
+    height: 50px;
+    text-align: center;
+    border-radius: 10px;
+    border: 2px solid #e9ecef;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.verification-code input:focus {
+    border-color: var(--auth-primary);
+    outline: none;
+}
+
+/* Responsive design */
+@media (max-width: 576px) {
+    .auth-container,
+    .login-container,
+    .signup-container,
+    .recovery-container {
+        padding: 0 10px;
+    }
+    
+    .auth-container .card-body,
+    .login-container .card-body,
+    .signup-container .card-body,
+    .recovery-container .card-body {
+        padding: 1.5rem;
+    }
+    
+    .verification-code input {
+        width: 40px;
+        height: 40px;
+        font-size: 1rem;
+    }
+}
+

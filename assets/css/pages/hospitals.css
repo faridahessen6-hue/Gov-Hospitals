@@ -1,0 +1,121 @@
+/* Hospitals Page Styles */
+/* Extracted from hospitals.html inline styles */
+
+/* Base layout */
+body[data-page="hospitals"] {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background-color: #f8f9fa;
+}
+
+/* Circle container for hospital network display */
+#circle-container {
+    position: relative;
+    width: 100%;
+    min-height: 80vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+/* Main central circle */
+#main-circle {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #003366, #0066cc);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-weight: bold;
+    text-align: center;
+    position: relative;
+    transform: scale(0);
+    transition: transform 2s ease-out;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+/* Hospital branch cards */
+.branch {
+    position: absolute;
+    background: white;
+    padding: 10px 15px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transform: scale(0);
+    transition: transform 0.5s ease-out, opacity 0.5s ease-out;
+    opacity: 0;
+    width: 180px;
+    text-align: center;
+    font-weight: 500;
+    border: 1px solid #e0e0e0;
+    cursor: pointer;
+}
+
+.branch:hover {
+    transform: scale(1.05) !important;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+}
+
+.branch i {
+    margin-right: 5px;
+    color: #003366;
+}
+
+/* Animation states */
+.branch.animate {
+    transform: scale(1);
+    opacity: 1;
+}
+
+#main-circle.animate {
+    transform: scale(1);
+}
+
+/* Footer positioning */
+body[data-page="hospitals"] footer {
+    margin-top: auto;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    #main-circle {
+        width: 150px;
+        height: 150px;
+        font-size: 0.9rem;
+    }
+    
+    .branch {
+        width: 140px;
+        padding: 8px 12px;
+        font-size: 0.85rem;
+    }
+    
+    #circle-container {
+        min-height: 70vh;
+        padding: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    #main-circle {
+        width: 120px;
+        height: 120px;
+        font-size: 0.8rem;
+    }
+    
+    .branch {
+        width: 120px;
+        padding: 6px 10px;
+        font-size: 0.8rem;
+    }
+    
+    #circle-container {
+        min-height: 60vh;
+        padding: 15px;
+    }
+}

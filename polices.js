@@ -71,7 +71,7 @@ async function displayPolicies() {
 
 // Initialize the page
 function initPage() {
-    // Header and footer are mounted by shared wrappers (js/header.js, js/footer.js)
+    // Header and footer are mounted by shared wrappers (components/common/header.js, js/footer.js)
     displayPolicies();
 }
 

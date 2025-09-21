@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -10,86 +10,8 @@
     
     <!-- Bootstrap Icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
-    
-    
-    <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            background-color: #f8f9fa;
-        }
-        
-        main {
-            flex: 1;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 2rem 0;
-        }
-        
-        .verification-container {
-            max-width: 500px;
-            width: 100%;
-            padding: 0 15px;
-        }
-        
-        .card {
-            border: none;
-            border-radius: 1rem;
-            box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
-        }
-        
-        .card-body {
-            padding: 2.5rem;
-        }
-        
-        .code-inputs {
-            display: flex;
-            justify-content: space-between;
-            margin: 2rem 0;
-        }
-        
-        .code-input {
-            width: 50px;
-            height: 60px;
-            text-align: center;
-            font-size: 1.5rem;
-            border: 2px solid #dee2e6;
-            border-radius: 8px;
-            margin: 0 5px;
-        }
-        
-        .code-input:focus {
-            border-color: #003366;
-            box-shadow: 0 0 0 0.25rem rgba(0, 51, 102, 0.15);
-            outline: none;
-        }
-        
-        .btn-primary {
-            background-color: #003366;
-            border: none;
-            padding: 0.75rem 1.5rem;
-            border-radius: 0.5rem;
-            width: 100%;
-            margin-top: 1rem;
-        }
-        
-        .btn-primary:hover {
-            background-color: #002244;
-        }
-        
-        .resend-code {
-            text-align: center;
-            margin-top: 1.5rem;
-        }
-        
-        .back-to-login {
-            text-align: center;
-            margin-top: 1.5rem;
-        }
-    </style>
+    <!-- Auth Forms CSS -->
+    <link rel="stylesheet" href="assets/css/pages/auth-forms.css">
 </head>
 <body data-page="code">
     <!-- Header will be inserted here by JavaScript -->
@@ -139,9 +61,72 @@
     <!-- Bootstrap JS and dependencies -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     
+    <!-- Import maps for module resolution -->
+    <script type="importmap">
+    {
+        "imports": {
+            "@/core/dom": "./core/dom.js",
+            "@/ui/header": "./components/common/header.js",
+            "@/ui/footer": "./components/common/footer.js",
+            "@/ui/theme": "./components/ui/theme.js",
+            "@/ui/loading": "./components/ui/loading.js",
+            "@/data/age-groups": "./data/age-groups.js"
+        }
+    }
+    </script>
+    
+    <!-- Load the header module -->
+    <script type="module">
+        import { createHeader } from './components/common/header.js';
+        import { createFooter } from './components/common/footer.js';
+        
+        // Initialize header and footer when DOM is loaded
+        document.addEventListener('DOMContentLoaded', () => {
+            const headerContainer = document.getElementById('header');
+            if (headerContainer) {
+                createHeader(headerContainer, {
+                    title: 'GovHealthcare',
+                    logo: 'hospital',
+                    fixed: true,
+                    showThemeToggle: false,
+                    showLanguageToggle: true,
+                    onLanguageChange: (lang) => {
+                        document.documentElement.lang = lang;
+                        document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+                        localStorage.setItem('language', lang);
+                    }
+                });
+            }
+            
+            const footerContainer = document.getElementById('footer');
+            if (footerContainer) {
+                createFooter(footerContainer);
+            }
+            
+            // Initialize the rest of the app
+            if (typeof initApp === 'function') {
+                initApp();
+            }
+        });
+    </script>
+    
     <!-- Our custom JavaScript -->
-    <script src="js/header.js"></script>
-    <script src="js/footer.js"></script>
-    <script type="module" src="src/bootstrap.js"></script>
+    
+    
+    <!-- Base Template System -->
+<script type="module">
+    import { initBaseTemplate, getStandardImportMap } from './templates/base-template.js';
+    
+    const importMapScript = document.createElement('script');
+    importMapScript.type = 'importmap';
+    importMapScript.textContent = JSON.stringify(getStandardImportMap(), null, 4);
+    document.head.appendChild(importMapScript);
+    
+    initBaseTemplate({
+        title: 'GovHealthcare',
+        logo: 'hospital'
+    });
+</script>
 </body>
 </html>
+

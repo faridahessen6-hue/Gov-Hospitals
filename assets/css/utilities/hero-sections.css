@@ -1,0 +1,87 @@
+/* Hero Sections and Banner Utilities */
+
+/* Base Hero Section */
+.hero-section {
+    color: white;
+    padding: 100px 0;
+    margin-bottom: 50px;
+    text-align: center;
+}
+
+.hero-primary {
+    background: linear-gradient(rgba(0, 51, 102, 0.9), rgba(0, 51, 102, 0.9)), url('https://source.unsplash.com/1600x900/?hospital,medical') center/cover no-repeat;
+}
+
+.hero-gradient-blue {
+    background: linear-gradient(135deg, #1a237e 0%, #283593 100%);
+}
+
+.hero-gradient-primary {
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
+}
+
+/* Hero Content */
+.hero-title {
+    font-weight: bold;
+    margin-bottom: 1rem;
+}
+
+.hero-subtitle {
+    font-size: 1.5rem;
+    border-top: 1px solid rgba(255,255,255,0.2);
+    padding-top: 15px;
+    margin-top: 10px;
+}
+
+/* Compact Hero for smaller sections */
+.hero-compact {
+    padding: 60px 0;
+}
+
+/* Responsive Hero */
+@media (max-width: 768px) {
+    .hero-section {
+        padding: 60px 0;
+    }
+    
+    .hero-subtitle {
+        font-size: 1.2rem;
+    }
+}
+
+/* Banner Section (smaller than hero) */
+.banner-section {
+    background: var(--primary-color);
+    color: white;
+    padding: 40px 0;
+    text-align: center;
+}
+
+.banner-gradient {
+    background: linear-gradient(90deg, var(--primary-color) 0%, var(--primary-dark) 100%);
+}
+
+/* Call to Action Sections */
+.cta-section {
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
+    color: white;
+    padding: 60px 0;
+    text-align: center;
+}
+
+.cta-button {
+    margin-top: 2rem;
+    padding: 1rem 2rem;
+    font-size: 1.2rem;
+    border-radius: 50px;
+    background: white;
+    color: var(--primary-color);
+    border: none;
+    transition: all 0.3s ease;
+}
+
+.cta-button:hover {
+    background: rgba(255, 255, 255, 0.9);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>حجز كشف طبي</title>
+    <!-- Bootstrap RTL CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.rtl.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <!-- Booking Form CSS -->
+    <link rel="stylesheet" href="assets/css/pages/booking-form.css">
+</head>
+<body data-page="booking-teen">
+    <!-- Header will be inserted here by JavaScript -->
+    <header id="header"></header>
+
+    <main class="container py-4">
+        <div class="booking-container">
+            <h1 id="typewriter" class="text-center mb-4"></h1>
+            <div id="booking-form">
+                <!-- Form will be inserted here by JavaScript -->
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer will be inserted here by JavaScript -->
+    <footer id="footer"></footer>
+
+    <!-- Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Import maps for module resolution -->
+    <script type="importmap">
+    {
+        "imports": {
+            "@/core/dom": "./core/dom.js",
+            "@/ui/header": "./components/common/header.js",
+            "@/ui/footer": "./components/common/footer.js",
+            "@/ui/theme": "./components/ui/theme.js",
+            "@/ui/loading": "./components/ui/loading.js",
+            "@/data/age-groups": "./data/age-groups.js"
+        }
+    }
+    </script>
+    
+    <!-- Load the header module -->
+    <script type="module">
+        import { createHeader } from './components/common/header.js';
+        import { createFooter } from './components/common/footer.js';
+        
+        // Initialize header and footer when DOM is loaded
+        document.addEventListener('DOMContentLoaded', () => {
+            const headerContainer = document.getElementById('header');
+            if (headerContainer) {
+                createHeader(headerContainer, {
+                    title: 'GovHealthcare',
+                    logo: 'hospital',
+                    fixed: true,
+                    showThemeToggle: true,
+                    showLanguageToggle: true,
+                    onThemeChange: (theme) => {
+                        document.documentElement.setAttribute('data-bs-theme', theme);
+                        localStorage.setItem('theme', theme);
+                    },
+                    onLanguageChange: (lang) => {
+                        document.documentElement.lang = lang;
+                        document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+                        localStorage.setItem('language', lang);
+                    }
+                });
+            }
+            
+            const footerContainer = document.getElementById('footer');
+            if (footerContainer) {
+                createFooter(footerContainer);
+            }
+            
+            // Initialize the rest of the app
+            if (typeof initApp === 'function') {
+                initApp();
+            }
+        });
+    </script>
+    <!-- Shared Header/Footer wrappers -->
+    
+    
+    <!-- Global bootstrap router -->
+    <script type="module" src="src/bootstrap.js"></script>
+</body>
+</html>
