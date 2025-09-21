@@ -26,11 +26,11 @@ export async function initBaseTemplate(options = {}) {
         showLanguageToggle: true,
         loadHeaderCSS: true,
         navItems: [
-        { text: 'Home', href: 'index.html', icon: 'house', active: isHome },
-            { text: 'Hospitals', href: 'hospitals.html', icon: 'hospital' },
-            { text: 'Book Appointment', href: 'booking.html', icon: 'calendar-check' },
-            { text: 'Ask Question', href: 'ask.html', icon: 'question-circle' },
-            { text: 'Contact', href: 'contact.html', icon: 'telephone' }
+        { text: 'Home', href: 'index.html', icon: 'house', active: isCurrentPage('index.html') },
+            { text: 'Hospitals', href: 'hospitals.html', icon: 'hospital', active: isCurrentPage('hospitals.html') },
+            { text: 'Book Appointment', href: 'booking.html', icon: 'calendar-check', active: isCurrentPage('booking.html') },
+            { text: 'Ask Question', href: 'ask.html', icon: 'question-circle', active: isCurrentPage('ask.html') },
+            { text: 'Contact', href: 'contact.html', icon: 'telephone', active: isCurrentPage('contact.html') }
         ],
         onLanguageChange: defaultLanguageChangeHandler,
         onInitComplete: null,
@@ -105,6 +105,28 @@ function initComponents(config, createHeader, createFooter) {
     }
 }
 
+
+/**
+ * Check if the given page is the current page
+ * @private
+ */
+function isCurrentPage(pagePath) {
+    try {
+        const currentPath = window.location.pathname;
+        const fileName = currentPath.split('/').pop() || 'index.html';
+        const targetFileName = pagePath.split('/').pop();
+        
+        // Handle root path and index.html equivalence
+        if (currentPath === '/' || currentPath.endsWith('/')) {
+            return targetFileName === 'index.html';
+        }
+        
+        return fileName === targetFileName;
+    } catch (error) {
+        console.warn('Error determining current page:', error);
+        return false;
+    }
+}
 
 /**
  * Default language change handler

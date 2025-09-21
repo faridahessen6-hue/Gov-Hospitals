@@ -80,10 +80,11 @@ export function createHeader(container, config = {}) {
                 mergedConfig.navItems.map(item => 
                     createElement('li', { class: 'nav-item mx-1' }, [
                         createElement('a', { 
-                            class: `nav-link px-3 py-2 rounded-pill transition-all`,
+                            class: `nav-link px-3 py-2 rounded-pill transition-all ${item.active ? 'active' : ''}`,
                             href: item.href,
-                            style: `color: var(--dark-color, #212529); 
-                                   font-weight: 500;
+                            style: `color: ${item.active ? 'var(--primary-color, #1a5f7a)' : 'var(--dark-color, #212529)'}; 
+                                   font-weight: ${item.active ? '600' : '500'};
+                                   background-color: ${item.active ? 'var(--light-color, #f8f9fa)' : 'transparent'};
                                    transition: all 0.3s ease;
                                    position: relative;`
                         }, [
