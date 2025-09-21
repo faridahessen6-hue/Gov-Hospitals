@@ -2,6 +2,7 @@
 document.addEventListener('DOMContentLoaded', function() {
     createLoginContent();
     initializeLoginForm();
+    checkPasswordResetSuccess();
 });
 
 // Create the main login content
@@ -378,3 +379,11 @@ function checkExistingSession() {
 document.addEventListener('DOMContentLoaded', function() {
     checkExistingSession();
 });
+
+// Check for password reset success message
+function checkPasswordResetSuccess() {
+    if (sessionStorage.getItem('passwordResetSuccess')) {
+        sessionStorage.removeItem('passwordResetSuccess');
+        showAlert('success', 'Password reset completed successfully! Please login with your new password.', 'Password Reset Complete');
+    }
+}
