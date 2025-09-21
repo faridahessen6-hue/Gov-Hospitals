@@ -61,7 +61,7 @@ export const APP_CONFIG = {
     // Navigation Configuration
     navigation: {
         main: [
-            { text: 'Home', textAr: 'الرئيسية', href: 'home.html', icon: 'house' },
+            { text: 'Home', textAr: 'الرئيسية', href: 'index.html', icon: 'house' },
             { text: 'Hospitals', textAr: 'المستشفيات', href: 'hospitals.html', icon: 'hospital' },
             { text: 'Book Appointment', textAr: 'حجز موعد', href: 'book.html', icon: 'calendar-check' },
             { text: 'Ask Question', textAr: 'اسأل سؤال', href: 'ask.html', icon: 'question-circle' },
@@ -69,7 +69,7 @@ export const APP_CONFIG = {
             { text: 'Contact', textAr: 'اتصل بنا', href: 'contact.html', icon: 'envelope' }
         ],
         footer: [
-            { text: 'Home', textAr: 'الرئيسية', href: 'home.html', icon: 'house' },
+            { text: 'Home', textAr: 'الرئيسية', href: 'index.html', icon: 'house' },
             { text: 'About', textAr: 'عنا', href: 'about.html', icon: 'info' },
             { text: 'Contact', textAr: 'اتصل بنا', href: 'contact.html', icon: 'envelope' },
             { text: 'Policies', textAr: 'السياسات', href: 'policies.html', icon: 'shield-check' },

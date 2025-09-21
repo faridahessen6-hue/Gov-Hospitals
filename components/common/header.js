@@ -12,7 +12,7 @@ const defaultHeaderConfig = {
     transparent: false,
     fixed: true, // Default to fixed for better UX
     navItems: [
-        { text: 'Home', href: 'home.html', icon: 'house' },
+            { text: 'Home', href: 'index.html', icon: 'house' },
         { text: 'Hospitals', href: 'hospitals.html', icon: 'hospital' },
         { text: 'Book Appointment', href: 'booking.html', icon: 'calendar-check' },
         { text: 'Ask Question', href: 'ask.html', icon: 'question-circle' },
@@ -43,7 +43,7 @@ export function createHeader(container, config = {}) {
         // Logo/Brand with enhanced styling
         mergedConfig.showLogo ? createElement('a', { 
             class: 'navbar-brand d-flex align-items-center text-decoration-none',
-            href: 'home.html',
+            href: 'index.html',
             style: 'color: var(--primary-color, #1a5f7a); font-weight: 500;'
         }, [
             createElement('i', { 

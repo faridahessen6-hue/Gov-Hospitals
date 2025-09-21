@@ -26,7 +26,7 @@ export async function initBaseTemplate(options = {}) {
         showLanguageToggle: true,
         loadHeaderCSS: true,
         navItems: [
-            { text: 'Home', href: 'home.html', icon: 'house' },
+        { text: 'Home', href: 'index.html', icon: 'house', active: isHome },
             { text: 'Hospitals', href: 'hospitals.html', icon: 'hospital' },
             { text: 'Book Appointment', href: 'booking.html', icon: 'calendar-check' },
             { text: 'Ask Question', href: 'ask.html', icon: 'question-circle' },

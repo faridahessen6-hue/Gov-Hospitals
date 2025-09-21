@@ -283,7 +283,7 @@ async function handleLogin() {
             
             // Redirect to dashboard or home page
             setTimeout(() => {
-                window.location.href = 'home.html';
+            window.location.href = 'index.html';
             }, 1500);
 
         } else {
@@ -365,7 +365,7 @@ function checkExistingSession() {
             // If valid session exists, redirect to dashboard
             showAlert('info', 'You are already logged in. Redirecting...');
             setTimeout(() => {
-                window.location.href = 'home.html';
+        window.location.href = 'index.html';
             }, 1500);
         } catch (error) {
             // Invalid session data, clear it

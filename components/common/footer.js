@@ -44,7 +44,7 @@ export function createFooter() {
         {
             title: 'Quick Links',
             links: [
-                { text: 'Home', url: 'home.html', icon: 'chevron-left' },
+                { text: 'Home', url: 'index.html', icon: 'chevron-left' },
                 { text: 'Hospitals', url: 'hospitals.html', icon: 'hospital' },
                 { text: 'Book Appointment', url: 'book.html', icon: 'calendar-plus' },
                 { text: 'Ask a Question', url: 'ask.html', icon: 'question-circle' },

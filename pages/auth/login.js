@@ -118,7 +118,7 @@ function setupEventListeners() {
                 sessionStorage.setItem('user', JSON.stringify(userData));
                 
                 // Redirect to home page or dashboard
-                window.location.href = 'home.html';
+                window.location.href = 'index.html';
                 
             } catch (error) {
                 console.error('Login error:', error);

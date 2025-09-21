@@ -427,7 +427,7 @@ function checkExistingSession() {
             JSON.parse(userSession); // Validate JSON
             showAlert('info', 'You are already logged in. Redirecting to dashboard...');
             setTimeout(() => {
-                window.location.href = 'home.html';
+                window.location.href = 'index.html';
             }, 1500);
         } catch (error) {
             // Invalid session data, clear it

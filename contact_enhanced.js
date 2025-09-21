@@ -167,7 +167,7 @@ function showSuccessMessage() {
                 <button class="btn btn-primary" onclick="resetContactForm()">
                     <i class="bi bi-arrow-left me-2"></i>Send Another Message
                 </button>
-                <a href="home.html" class="btn btn-outline-primary">
+                <a href="index.html" class="btn btn-outline-primary">
                     <i class="bi bi-house me-2"></i>Back to Home
                 </a>
             </div>
